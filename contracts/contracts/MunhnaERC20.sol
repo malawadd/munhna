@@ -3,14 +3,14 @@ pragma solidity ^0.8.18;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
-import "./Interface/ICurvXErc20.sol";
+import "./Interface/IMunhnaErc20.sol";
 
 /**
  * @title Munhna lockable erc20 contract
  * @dev A standard erc20 implementation with the required
  * functionalities for token locking feature.
  */
-contract Munhna_ERC20 is ERC20, ICurvXErc20, AccessControl {
+contract Munhna_ERC20 is ERC20, IMunhnaErc20, AccessControl {
     /**
      * @dev list of locked balances of each accounts
      */
