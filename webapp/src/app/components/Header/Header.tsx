@@ -25,6 +25,10 @@ type Network = {
 };
 
 const Header = () => {
+  const MunhnLogo = require('../../../assets/images/MunhnLogo.png');
+  const DisconnectIcon = require('../../../assets/images/Disconnect.png');
+  const WalletIcon = require('../../../assets/images/WalletIcon.png');
+
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -82,7 +86,7 @@ const Header = () => {
       <div className="nav-items">
         {location.pathname === homepage ? (
           <>
-            <a href="https://docs.curvx.io/" target="blank" style={{ textDecoration: "none", color: "#ffffff" }} rel="noreferrer">Docs</a>
+            <a href="" target="blank" style={{ textDecoration: "none", color: "#ffffff" }} rel="noreferrer">Docs</a>
             <div>About</div>
             <div>
               <Link style={{ textDecoration: "none" }} to={dashboard}>
