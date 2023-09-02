@@ -13,6 +13,9 @@ import {
 import { chainList } from "../../../utils/constants";
 import { formatWalletAddress } from "../../../utils/methods";
 import { routes } from "../../../utils/routes";
+import useMetamaskProvider from "../../customHooks/useMetamaskProvider";
+import { selectNetwork, selectWallet, selectWalletConnected } from "../../slice/wallet.selector";
+import { resetWallet } from "../../slice/wallet.slice";
 
 import "./index.scss";
 
@@ -25,10 +28,23 @@ const Header = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
+  const { connectWallet, connected } = useMetamaskProvider();
   const { dashboard, portfolio, homepage } = routes;
-  const { testnet } = chainList;
+  const {  testnet } = chainList;
 
+  const networkId = useSelector(selectNetwork);
+  const address = useSelector(selectWallet);
+  const walletConnected = useSelector(selectWalletConnected);
 
+  const handleConnectWallet = async () => {
+    connectWallet();
+  };
+
+  const handleDisconnect: MenuProps["onClick"] = (e) => {
+    if (e.key) {
+      dispatch(resetWallet());
+    }
+  };
 
   const items: MenuProps["items"] = [
     {
@@ -43,7 +59,15 @@ const Header = () => {
     className: "",
   };
 
-
+  switch (networkId) {
+   
+    case testnet:
+      network.className = "testnet";
+      network.name = "Testnet";
+      break;
+    default:
+      break;
+  }
 
   return (
     <div
@@ -77,7 +101,7 @@ const Header = () => {
                 style={{ textDecoration: "none", color: "#ffffff" }}
                 to={portfolio}
               >
-               
+                <div>{walletConnected ? "Portfolio" : ""}</div>
               </Link>
             ) : (
               <Link
@@ -87,7 +111,31 @@ const Header = () => {
                 <div>Dashboard</div>
               </Link>
             )}
-            
+            {connected && address ? (
+              <Dropdown
+                menu={{ items, onClick: handleDisconnect }}
+                placement="bottom"
+              >
+                <Button className="connect-btn" onClick={handleConnectWallet}>
+                  <img
+                    className="connect-icon"
+                    src={WalletIcon}
+                    alt="wallet-group"
+                  />
+                  {formatWalletAddress(address)}
+                  <DownOutlined />
+                </Button>
+              </Dropdown>
+            ) : (
+              <Button className="connect-btn" onClick={handleConnectWallet}>
+                <img
+                  className="connect-icon"
+                  src={WalletIcon}
+                  alt="wallet-group"
+                />
+                Connect Wallet
+              </Button>
+            )}
           </div>
         )}
       </div>

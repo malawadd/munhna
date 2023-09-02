@@ -29,7 +29,7 @@ export const defaultChainId = process.env.REACT_APP_DEFAULT_CHAIN_ID;
 
 export const UsdtLogoUrl = process.env.REACT_APP_PAIR_TOKEN_LOGO_URL ?? "";
 
-export const supportedChains = ["250", "4002"];
+export const supportedChains = ["5611"];
 
 export const chainList = {
   testnet: "5611",
