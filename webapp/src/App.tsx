@@ -9,6 +9,12 @@ import { useWalletSlice } from "./app/slice/wallet.slice";
 import useMetamaskProvider from "./app/customHooks/useMetamaskProvider";
 import { routes } from "./utils/routes";
 import HomePage from "./app/containers/HomePage";
+import AppScreen from "./app/containers/AppScreen";
+
+import {
+  resetFactory,
+  useFactorySlice,
+} from "./app/slice/factory/factory.slice";
 
 function App() {
   useWalletSlice();
@@ -33,6 +39,7 @@ function App() {
        <Header />
        <Routes>
           <Route path={routes.homepage} element={<HomePage />} />
+          <Route path={routes.dashboard} element={<AppScreen />} />
         </Routes>
 
     </div>
