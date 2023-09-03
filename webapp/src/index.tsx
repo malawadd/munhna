@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { configureAppStore } from "./store/configureStore";
-import "./index.css";
+import "./index.scss";
 import App from "./App";
 import { MetamaskStateProvider } from "use-metamask";
 import "bootstrap/dist/css/bootstrap.css";
