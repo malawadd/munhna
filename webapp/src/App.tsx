@@ -35,8 +35,6 @@ function App() {
           <Route path={routes.homepage} element={<HomePage />} />
         </Routes>
 
-      
-     
     </div>
     </Router>
   );
