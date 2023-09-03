@@ -7,8 +7,10 @@ import { factoryContract } from "../../contracts/factoryContract";
 import {
   chainList,
   defaultChainId,
+  defaultPublicRpc,
   defaultPublicRpcTestnet,
   errorMessages,
+  factoryContractAddress,
   factoryContractAddressTestnet,
   responseMessages,
 } from "../../utils/constants";
@@ -41,7 +43,10 @@ function useFactory() {
     async (contractAddress: string, readOnly?: boolean) => {
       if (readOnly && !metaState.web3) {
         const network = chainId || defaultChainId;
-        const rpc = defaultPublicRpcTestnet;
+        const rpc =
+          network === chainList.mainnet
+            ? defaultPublicRpc
+            : defaultPublicRpcTestnet;
         const provider = new ethers.providers.JsonRpcProvider(rpc);
         return new ethers.Contract(
           contractAddress,
@@ -63,11 +68,14 @@ function useFactory() {
     [chainId, metaState.web3]
   );
 
-  const getBondingMunhnaInstance = useCallback(
+  const getBondingCurveInstance = useCallback(
     async (contractAddress: string, readOnly?: boolean) => {
       if (readOnly && !metaState.web3) {
         const network = chainId || defaultChainId;
-        const rpc =defaultPublicRpcTestnet;
+        const rpc =
+          network === chainList.mainnet
+            ? defaultPublicRpc
+            : defaultPublicRpcTestnet;
         const provider = new ethers.providers.JsonRpcProvider(rpc);
         return new ethers.Contract(contractAddress, BondingMunhna.abi, provider);
       }
@@ -97,13 +105,16 @@ function useFactory() {
     salt,
   }: DeployParams) => {
     const network = chainId || defaultChainId;
-    const factoryAdd = factoryContractAddressTestnet;
+    const factoryAdd =
+      network === chainList.mainnet
+        ? factoryContractAddress
+        : factoryContractAddressTestnet;
     if (factoryAdd) {
       const contract = await getContractInstance(factoryAdd);
 
       if (contract) {
         const deployTxnResponse: ContractTransaction =
-          await contract.deployMunhna(
+          await contract.deployCurveX(
             name,
             symbol,
             logoURL,
@@ -125,7 +136,10 @@ function useFactory() {
 
   const getTokenPairList = useCallback(async () => {
     const network = chainId || defaultChainId;
-    const factoryAdd =  factoryContractAddressTestnet;
+    const factoryAdd =
+      network === chainList.mainnet
+        ? factoryContractAddress
+        : factoryContractAddressTestnet;
     if (factoryAdd) {
       const contract = await getContractInstance(factoryAdd, true);
       if (!contract) return [];
@@ -161,7 +175,7 @@ function useFactory() {
     tokenB,
   }: BuyTokens) => {
     try {
-      const contract = await getBondingMunhnaInstance(tokenManager);
+      const contract = await getBondingCurveInstance(tokenManager);
       const erc20 = await getErc20(tokenB);
 
       if (contract && erc20 && estimatedPrice && amount) {
@@ -195,7 +209,7 @@ function useFactory() {
 
   const sellTokens = async ({ tokenManager, amount, tokenA }: SellTokens) => {
     try {
-      const contract = await getBondingMunhnaInstance(tokenManager);
+      const contract = await getBondingCurveInstance(tokenManager);
       const erc20 = await getErc20(tokenA);
 
       if (contract && erc20) {
@@ -241,7 +255,7 @@ function useFactory() {
     deployedTokenList,
     metaState,
     getContractInstance,
-    getBondingMunhnaInstance,
+    getBondingCurveInstance,
     getTokenPairList,
     deployBondingToken,
     buyTokens,

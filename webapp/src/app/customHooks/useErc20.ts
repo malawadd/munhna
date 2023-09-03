@@ -6,6 +6,7 @@ import { MunhnaErc20 } from "../../contracts/MunhnaErc20";
 import {
   chainList,
   defaultChainId,
+  defaultPublicRpc,
   defaultPublicRpcTestnet,
   errorMessages,
 } from "../../utils/constants";
@@ -20,7 +21,10 @@ function useErc20() {
     async (contractAddress: string, readOnly?: boolean) => {
       if (readOnly && !metaState.web3) {
         const network = chainId || defaultChainId;
-        const rpc =  defaultPublicRpcTestnet;
+        const rpc =
+          network === chainList.mainnet
+            ? defaultPublicRpc
+            : defaultPublicRpcTestnet;
         const provider = new ethers.providers.JsonRpcProvider(rpc);
         return new ethers.Contract(contractAddress, MunhnaErc20.abi, provider);
       }

@@ -15,12 +15,19 @@ export const errorMessages = {
 
 export const NftStorageToken = process.env.REACT_APP_NFT_STORAGE_API_TOKEN;
 
+export const factoryContractAddress = process.env.REACT_APP_FACTORY_CONTRACT;
+
 export const factoryContractAddressTestnet =
   process.env.REACT_APP_FACTORY_CONTRACT_TESTNET;
 
+  export const defaultPublicRpc =
+  process.env.REACT_APP_DEFAULT_PUBLIC_RPC_MAINNET;
 
 export const defaultPublicRpcTestnet =
   process.env.REACT_APP_DEFAULT_PUBLIC_RPC_TESTNET;
+
+  export const pairTokenAddress =
+  process.env.REACT_APP_PAIR_TOKEN_MAINNET_ADDRESS ?? "";
 
 export const pairTokenAddressTestnet =
   process.env.REACT_APP_PAIR_TOKEN_TESTNET_ADDRESS ?? "";
@@ -32,10 +39,12 @@ export const UsdtLogoUrl = process.env.REACT_APP_PAIR_TOKEN_LOGO_URL ?? "";
 export const supportedChains = ["5611"];
 
 export const chainList = {
+  mainnet: "204",
   testnet: "5611",
 };
 
 export const explorerList = {
+  mainnetUrl: "https://opbnbscan.com/tx/",
   testnetUrl: "https://opbnbscan.com/tx/",
 };
 
