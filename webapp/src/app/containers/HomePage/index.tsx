@@ -12,7 +12,7 @@ import {
   ConnectorDiv,
   Hand,
 } from "../../../assets/images/imageAssets";
-// import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 import { routes } from "../../../utils/routes";
 
 import "./index.scss";
@@ -35,7 +35,7 @@ const HomePage = () => {
             Explore the newly envisioned potential of token issuance within the OPBNB ecosystem.
             </p>
             <p className="hero-description">
-              
+
               Presenting a Revolutionary Dapp that Transforms Flexibility, 
               Empowers Dynamic Functionality, and Simplifies Effortless Token Management,
                all within a Single Platform!
@@ -216,7 +216,7 @@ const HomePage = () => {
           <img src={Greek} className="greek" alt="gods-greek"></img>
         </div>
       </section>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
