@@ -9,5 +9,9 @@ export { default as Price } from "./Price.svg";
 export { default as HeroImage } from "./HeroImage.png";
 export { default as ConnectorDiv } from "./connector-strip.png";
 export { default as Hand } from "./hand.png";
-
-
+export { default as QuestionCircle } from "./QuestionCircle.png";
+export { default as BuySetting } from "./BuySetting.png";
+export { default as BNBLogo } from "./BNBlogo.png";
+export { default as EthereumLogo } from "./ethereum-icon.png";
+export { default as TokenLogo } from "./TokenLogo.svg";
+export { default as PreviewImage } from "./preview-image.png";
