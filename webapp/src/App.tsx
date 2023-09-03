@@ -8,6 +8,7 @@ import Header from "./app/components/Header/Header";
 import { useWalletSlice } from "./app/slice/wallet.slice";
 import useMetamaskProvider from "./app/customHooks/useMetamaskProvider";
 import { routes } from "./utils/routes";
+import HomePage from "./app/containers/HomePage";
 
 function App() {
   useWalletSlice();
@@ -30,6 +31,10 @@ function App() {
    
     <div className="App">
        <Header />
+       <Routes>
+          <Route path={routes.homepage} element={<HomePage />} />
+        </Routes>
+
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
