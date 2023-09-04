@@ -1,6 +1,6 @@
 export { default as FooterLogo } from "./FooterLogo.png";
 export { default as WalletIcon } from "./WalletIcon.png";
-export { default as Hand } from "./Hand.png";
+export { default as Hand } from "./hand_.png";
 export { default as ConnectorDiv } from "./connector-strip.png";
 export { default as BNBLogo } from "./BNBlogo.png";
 export { default as EthereumLogo } from "./ethereum-icon.png";
