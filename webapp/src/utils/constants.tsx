@@ -1,7 +1,7 @@
 export const errorMessages = {
   connectWalletFailed: "Failed To Connect",
   unSupportedNetwork:
-    "Unsupported Network, Kindly Connect To OpBNB Test Network",
+    "Unsupported Network, Kindly Connect To Supported Network",
   walletConnectionRequired: "Please connect wallet",
   insufficientBalance: "Insufficient balance to make transaction",
   vestingPeriodNotEnded: "Vesting Period Not Ended, Please Try Less Amount",
@@ -20,13 +20,13 @@ export const factoryContractAddress = process.env.REACT_APP_FACTORY_CONTRACT;
 export const factoryContractAddressTestnet =
   process.env.REACT_APP_FACTORY_CONTRACT_TESTNET;
 
-  export const defaultPublicRpc =
+export const defaultPublicRpc =
   process.env.REACT_APP_DEFAULT_PUBLIC_RPC_MAINNET;
 
 export const defaultPublicRpcTestnet =
   process.env.REACT_APP_DEFAULT_PUBLIC_RPC_TESTNET;
 
-  export const pairTokenAddress =
+export const pairTokenAddress =
   process.env.REACT_APP_PAIR_TOKEN_MAINNET_ADDRESS ?? "";
 
 export const pairTokenAddressTestnet =

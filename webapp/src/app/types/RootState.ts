@@ -6,5 +6,4 @@ export interface RootState {
   wallet: WalletState;
   factory: FactoryState;
   deployToken: DeployTokenState;
-
 }

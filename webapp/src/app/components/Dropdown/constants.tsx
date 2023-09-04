@@ -7,7 +7,7 @@ export const currencyList = [
         icon: EthereumLogo,
     },
     {
-        value: "bnb",
+        value: "BNB",
         label: "BNB",
         icon: BNBLogo,
     },
@@ -15,13 +15,15 @@ export const currencyList = [
 
 export const tokenList = [
     {
+        value: "MunTest",
+        label: "MunTest",
+        icon: TokenLogo,
+    },
+    {
         value: "mun",
         label: "MUN",
         icon: TokenLogo,
     },
-    {
-        value: "nav",
-        label: "NAV",
-        icon: TokenLogo,
-    },
+    
+
 ];
