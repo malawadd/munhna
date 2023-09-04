@@ -78,7 +78,7 @@ export const getErc20Details = (
 ) => {
   return async (
     tokenAddress: string
-  ): Promise<Omit<TokenDetails, "cap" | "curveType" | "precision">> => {
+  ): Promise<Omit<TokenDetails, "cap" | "munhnaType" | "precision">> => {
     const tokenContract = contract.attach(tokenAddress);
     const [name, symbol, decimals, balance, totalSupply]: [
       string,
@@ -338,7 +338,7 @@ export const getBalanceList = async (
       const manager = tokenMap.get(balObj.tokenAddress).tokenManager;
       const currContract = bcContract.attach(manager);
       const totalSupply: BigNumber = await currContract.totalSupply();
-      const curveType: BigNumber = await currContract.curveType();
+      const curveType: BigNumber = await currContract.munhnaType();
       const precision: BigNumber =
         await currContract.callStatic.CURVE_PRECISION();
       return { ...balObj, totalSupply, precision, curveType };

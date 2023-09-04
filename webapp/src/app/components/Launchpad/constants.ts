@@ -35,6 +35,15 @@ export type LaunchFormData = {
   pairToken: string;
 };
 
+export type LaunchFormData2 = {
+  tokenName: string;
+  tokenSymbol: string;
+  curveType: number;
+  logoImage: string;
+  curveParams: CurveParams;
+  pairToken: string;
+};
+
 export const curveData = {
   "1": {
     type: CurveTypes.linear,

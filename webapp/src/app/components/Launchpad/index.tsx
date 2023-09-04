@@ -35,6 +35,7 @@ import {
   resetTransactionState,
   setDeployTokenError,
 } from "./deploy.slice";
+import { ethers } from "ethers";
 
 import "./index.scss";
 
@@ -48,6 +49,7 @@ const LaunchPad = () => {
   const walletConnected = useSelector(selectWalletConnected);
 
   const { deployBondingToken } = useFactory();
+  const factory = useFactory();
 
   const [curve, setCurve] = useState<string>("1");
 
@@ -92,7 +94,7 @@ const LaunchPad = () => {
 
   const precision = Form.useWatch("precision", form);
 
-  const onFormSubmit = (values: any) => {
+  const onFormSubmit = async (values: any) => {
     if (!walletConnected) {
       message.error(errorMessages.walletConnectionRequired);
       return;
@@ -100,9 +102,32 @@ const LaunchPad = () => {
 
     const network = networkId || defaultChainId;
 
-    const pair =  pairTokenAddressTestnet;
+    const pair =
+      network === chainList.mainnet
+        ? pairTokenAddress
+        : pairTokenAddressTestnet;
 
     showModal();
+    const deploymentParams = {
+      name: values.tokenName,
+      symbol: values.tokenSymbol,
+      cap: ethers.utils.parseEther(values.totalSupply.toString()),
+      lockPeriod: values.vestingPeriod,
+      precision: values.precision,
+      curveType: Number(values.curveType),
+      pairToken: pair,
+      logoURL: "fileIpfsUrl",
+      salt: ethers.utils.solidityKeccak256(
+        ['uint256'],
+        [Math.floor(Math.random() * 1000000000)]
+      ),
+    };
+
+    const transactionResponse = await factory.deployBondingToken(
+      deploymentParams
+    );
+
+
     const launchParams: LaunchFormData = {
       tokenName: values.tokenName,
       tokenSymbol: values.tokenSymbol,
@@ -115,11 +140,17 @@ const LaunchPad = () => {
         lockPeriod: getVestingPeriod(values.vestingPeriod),
       },
     };
+    console.log(launchParams)
+
     dispatch(
+
       deployToken({ formData: launchParams, deployToken: deployBondingToken })
     );
     dispatch(resetFactory());
   };
+
+
+ 
 
   return (
     <div className="launchpad-section">
@@ -178,7 +209,7 @@ const LaunchPad = () => {
             <Form.Item
               name="logoImage"
               rules={[
-                { required: true, message: "Please Upload Token Image!" },
+                { required: false, message: "Please Upload Token Image!" },
               ]}
             >
               <ImageUploader formInstance={form} />
@@ -275,6 +306,7 @@ const LaunchPad = () => {
                 <Button htmlType="submit" className="mint-button">
                   Mint Token
                 </Button>
+
                 <TransactionModal
                   handleCancel={handleCancel}
                   isClosable={isClosable}

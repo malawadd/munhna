@@ -21,6 +21,8 @@ const ImageUploader = ({ formInstance }: { formInstance: FormInstance }) => {
     }
 
     formInstance.setFieldValue("logoImage", newFileList[0].originFileObj);
+
+    console.log("uploading done")
   };
 
   return (

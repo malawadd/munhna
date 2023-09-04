@@ -12,6 +12,7 @@ import {
   setDeployTokenSuccess,
 } from "./deploy.slice";
 import { uploadFileIpfs } from "./nftStorageService";
+import useFactory from "../../customHooks/useFactory";
 
 export type DeploySagaPayload = PayloadAction<{
   formData: LaunchFormData;
@@ -19,14 +20,22 @@ export type DeploySagaPayload = PayloadAction<{
 }>;
 
 export function* deployTokenSaga({ payload }: DeploySagaPayload) {
+  
   try {
+    
+    
+    
     const { formData, deployToken } = payload;
 
     const { tokenName, tokenSymbol, curveType, curveParams, pairToken } =
       formData;
 
     const fileIpfsUrl: string = yield call(uploadFileIpfs, formData);
+    // const fileIpfsUrl: string = "yield call(uploadFileIpfs, formData)";
 
+    console.log("payload", payload)
+    console.log("results", fileIpfsUrl)
+    console.log()
     const result: TransactionResponse = yield call(deployToken, {
       name: tokenName,
       symbol: tokenSymbol,
@@ -41,6 +50,7 @@ export function* deployTokenSaga({ payload }: DeploySagaPayload) {
         [Math.floor(Math.random() * 1000000000)]
       ),
     });
+    console.log("results", result)
 
     yield call(result.wait, 2);
 
@@ -63,5 +73,6 @@ export function* deployTokenSaga({ payload }: DeploySagaPayload) {
 }
 
 export function* callDeployTokenSaga() {
+  
   yield takeLatest(deployToken, deployTokenSaga);
 }

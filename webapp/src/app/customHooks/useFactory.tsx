@@ -114,7 +114,7 @@ function useFactory() {
 
       if (contract) {
         const deployTxnResponse: ContractTransaction =
-          await contract.deployCurveX(
+          await contract.deployMunhna(
             name,
             symbol,
             logoURL,
