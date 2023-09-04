@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 import {
-  MunhnLogo,
+  CurvXLogo,
   DisconnectIcon,
   WalletIcon,
 } from "../../../assets/images/imageAssets";
@@ -25,16 +25,12 @@ type Network = {
 };
 
 const Header = () => {
-  const MunhnLogo = require('../../../assets/images/MunhnLogo.png');
-  const DisconnectIcon = require('../../../assets/images/Disconnect.png');
-  const WalletIcon = require('../../../assets/images/WalletIcon.png');
-
   const location = useLocation();
   const dispatch = useDispatch();
 
   const { connectWallet, connected } = useMetamaskProvider();
   const { dashboard, portfolio, homepage } = routes;
-  const {  testnet } = chainList;
+  const { mainnet, testnet } = chainList;
 
   const networkId = useSelector(selectNetwork);
   const address = useSelector(selectWallet);
@@ -64,7 +60,10 @@ const Header = () => {
   };
 
   switch (networkId) {
-   
+    case mainnet:
+      network.className = "mainnet";
+      network.name = "Mainnet";
+      break;
     case testnet:
       network.className = "testnet";
       network.name = "Testnet";
@@ -80,7 +79,7 @@ const Header = () => {
     >
       <div>
         <Link style={{ textDecoration: "none" }} to={homepage}>
-          <img className="logo" src={MunhnLogo} alt="CurveX_Logo" />
+          <img className="logo" src={CurvXLogo} alt="CurveX_Logo" />
         </Link>
       </div>
       <div className="nav-items">

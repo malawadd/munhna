@@ -1,4 +1,9 @@
-
+import {
+  FooterLogo,
+  Twitter,
+  LinkedIn,
+  Discard,
+} from "../../../assets/images/imageAssets";
 import { googleFormsLink, socialLinks } from "../../../utils/constants";
 
 import "./index.scss";
@@ -10,13 +15,23 @@ const Footer = () => {
     <div className="footer">
       <div className="container1">
         <div className="foo-sec1">
-          <img className="footer-logo"  alt="Munhna_Logo" />
+          <img className="footer-logo" src={FooterLogo} alt="CurveX_Logo" />
           <div className="foo-content">
-            
+          Participate in shaping the future of token economics and harness limitless potential through our advanced bonding curve technology.
           </div>
-          
+          <div className="social-icons">
+            <a href={discard} target="_blank" rel="noopener noreferrer">
+              <img src={Discard} alt="DiscardLogo" />
+            </a>
+            <a href={twitter} target="_blank" rel="noopener noreferrer">
+              <img src={Twitter} alt="TwitterLogo" />
+            </a>
+            <a href={linkedIn} target="_blank" rel="noopener noreferrer">
+              <img src={LinkedIn} alt="LinkedInLogo" />
+            </a>
+          </div>
           <div className="copy-right">
-            Copyright © 2023 <span style={{ color: "#000000" }}>MunHna</span>
+            Copyright © 2023 <span style={{ color: "#000000" }}>CurvX</span>
           </div>
         </div>
         <div className="d-flex foo-sec2">

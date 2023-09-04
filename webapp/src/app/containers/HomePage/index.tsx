@@ -35,8 +35,7 @@ const HomePage = () => {
             Explore the newly envisioned potential of token issuance within the OPBNB ecosystem.
             </p>
             <p className="hero-description">
-
-              Presenting a Revolutionary Dapp that Transforms Flexibility, 
+            Presenting a Revolutionary Dapp that Transforms Flexibility, 
               Empowers Dynamic Functionality, and Simplifies Effortless Token Management,
                all within a Single Platform!
             </p>
@@ -58,17 +57,14 @@ const HomePage = () => {
       </section>
       <section className="why-section">
         <p className="title-2">
-          Why <span className="curve">MunHna?</span>
+          Why <span className="curve">Munhna?</span>
         </p>
         <div className="row-1">
           <div className="feature">
             <img src={Settings} alt="settings"></img>
             <p className="feature-title">Customizable Token Economics</p>
             <p className="sub-content">
-              CurvX offers flexibility in designing token economics. Users can
-              customize the parameters of the bonding curve, such as the initial
-              price, slope, and reserve ratio, to align with their desired token
-              issuance dynamics.
+            Munhna provides users with the capability to tailor token economics by adjusting bonding curve parameters, including initial price, slope, and reserve ratio, to align precisely with their preferred token issuance strategies.
             </p>
           </div>
           <div className="feature">
@@ -77,10 +73,7 @@ const HomePage = () => {
               Support for different types of bonding curves
             </p>
             <p className="sub-content">
-              We are offering a variety of bonding curve types. Token issuers
-              can choose the curve type that best suits their desired tokenomics
-              and project requirements. As a result, token issuers can alter the
-              dynamics of token issuance to suit their unique objectives.
+            We provide a range of bonding curve options, allowing token issuers to select the curve type aligning with their specific tokenomics and project needs. This flexibility empowers token issuers to customize token issuance dynamics in accordance with their unique objectives.
             </p>
           </div>
         </div>
@@ -89,11 +82,7 @@ const HomePage = () => {
             <img src={Unlock} alt="token"></img>
             <p className="feature-title">Token-Vesting</p>
             <p className="sub-content">
-              During the lock-up period, users can unlock the potential perks
-              associated with token appreciation. Those who have locked up their
-              tokens can take advantage of the opportunity to sell at an
-              increased rate once the lock-up duration has passed, encouraging
-              them to potentially earn profit as the token value rises
+            Throughout the lock-up duration, users have the option to unlock potential benefits linked to token appreciation. Those who choose to lock their tokens can seize the opportunity to sell at a higher rate once the lock-up period concludes, potentially facilitating profit generation as the token's value increases.
             </p>
           </div>
           <div className="feature-last">
@@ -204,12 +193,10 @@ const HomePage = () => {
         <div className="fantom-section-left">
           <p className="title">Potential Scalability of OPBNB</p>
           <p className="sub-content">
-            We consider OPBNB to be an excellent choice in our quest to develop
-            an effective bonding curve-based token granting system. Its
-            remarkable scalability empowers us with the ability to handle
-            growing demands. We appreciate OPBNB's minimal transaction fees,
-            extensive ecosystem support, smooth interoperability, top-notch
-            security, and thriving community
+          OPBNB stands out as an excellent choice for our endeavor to create an efficient bonding 
+          curve-based token granting system. Its impressive scalability equips us to accommodate 
+          increasing demands. We value OPBNB for its minimal transaction fees, robust ecosystem support, 
+          seamless interoperability, high-level security, and vibrant community.
           </p>
         </div>
         <div className="fantom-section-right">
